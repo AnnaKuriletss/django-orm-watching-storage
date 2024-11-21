@@ -10,7 +10,7 @@ USE_DATABASE = env.bool("USE_DATABASE", default=True)
 
 DATABASES = {
     "default": {
-        "ENGINE": env("APP_ENGINE") if USE_DATABASE else "",
+        "ENGINE": "django.db.backends.postgresql_psycopg2" if USE_DATABASE else "",
         "HOST": env("APP_HOST") if USE_DATABASE else "",
         "PORT": env("APP_PORT") if USE_DATABASE else 0,
         "NAME": env("APP_NAME") if USE_DATABASE else "",
