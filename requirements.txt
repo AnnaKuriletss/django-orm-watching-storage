@@ -1,10 +1,4 @@
 django==3.2.*
 psycopg2-binary==2.9.*
-
-
-python-dotenv~=1.0.1
 pytz~=2024.2
-sqlparse~=0.5.2
-psycopg2~=2.9.10
-asgiref~=3.8.1
 environs~=11.2.0
