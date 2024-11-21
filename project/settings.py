@@ -1,45 +1,50 @@
 import os
 from environs import Env
 
+
 env = Env()
 env.read_env()
 
+
+USE_DATABASE = env.bool("USE_DATABASE", default=True)
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': env('APP_HOST'),
-        'PORT': env('APP_PORT'),
-        'NAME': env('APP_NAME'),
-        'USER': env('APP_USER'),
-        'PASSWORD': env('APP_PASSWORD'),
+    "default": {
+        "ENGINE": env("APP_ENGINE") if USE_DATABASE else "",
+        "HOST": env("APP_HOST") if USE_DATABASE else "",
+        "PORT": env("APP_PORT") if USE_DATABASE else 0,
+        "NAME": env("APP_NAME") if USE_DATABASE else "",
+        "USER": env("APP_USER") if USE_DATABASE else "",
+        "PASSWORD": env("APP_PASSWORD") if USE_DATABASE else "",
     }
 }
 
-INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = env('DJANGO_SECRET_KEY')
+INSTALLED_APPS = ["datacenter"]
 
-DEBUG = env.bool('DEBUG_MODE', default=False)
+SECRET_KEY = env("DJANGO_SECRET_KEY")
 
-ROOT_URLCONF = 'project.urls'
+DEBUG = env.bool("DEBUG_MODE", default=False)
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost'])
+ROOT_URLCONF = "project.urls"
+
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost"])
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "APP_DIRS": True,
     },
 ]
 
 USE_L10N = True
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = "ru-ru"
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = "Europe/Moscow"
 
 USE_TZ = True
 
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
