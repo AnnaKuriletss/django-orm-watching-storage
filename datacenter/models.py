@@ -1,5 +1,6 @@
 from django.db import models
 from datacenter.time_helpers import get_duration
+from datacenter.constants import MINUTES_IN_HOUR, SECONDS_IN_MINUTE
 
 
 class Passcard(models.Model):
@@ -29,4 +30,4 @@ class Visit(models.Model):
 
 
 def is_visit_long(visit):
-    return get_duration(visit).total_seconds() / 60 >= 60
+    return get_duration(visit).total_seconds() / SECONDS_IN_MINUTE >= MINUTES_IN_HOUR

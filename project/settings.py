@@ -7,23 +7,23 @@ env.read_env()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': env('DB_HOST'),
-        'PORT': '5434',
-        'NAME': 'checkpoint',
-        'USER': 'guard',
-        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('APP_HOST'),
+        'PORT': env('APP_PORT'),
+        'NAME': env('APP_NAME'),
+        'USER': env('APP_USER'),
+        'PASSWORD': env('APP_PASSWORD'),
     }
 }
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = env('DB_SECRET_KEY')
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
-DEBUG = env.bool('DEBUG', default=False)
+DEBUG = env.bool('DEBUG_MODE', default=False)
 
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = env.list('DB_ALLOWED_HOSTS', default=['localhost'])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost'])
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [

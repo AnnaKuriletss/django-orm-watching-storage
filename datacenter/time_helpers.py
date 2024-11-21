@@ -1,6 +1,7 @@
 from django.utils import timezone
 from datacenter.constants import SECONDS_IN_HOUR, SECONDS_IN_MINUTE
 
+
 def get_duration(visit):
     if visit.leaved_at:
         duration = visit.leaved_at - visit.entered_at
