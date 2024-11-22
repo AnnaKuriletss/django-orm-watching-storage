@@ -37,12 +37,13 @@ TEMPLATES = [
     },
 ]
 
-USE_L10N = True
+USE_L10N = env.bool("USE_L10N", default=True)
 
 LANGUAGE_CODE = "ru-ru"
 
 TIME_ZONE = "Europe/Moscow"
 
-USE_TZ = True
+USE_TZ = env.bool("USE_TZ", default=True)
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
