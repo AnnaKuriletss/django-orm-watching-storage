@@ -9,18 +9,18 @@ env.read_env()
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "HOST": env("DB_HOST"),
-        "PORT": env("DB_PORT"),
-        "NAME": env("DB_NAME"),
-        "USER": env("DB_USER"),
-        "PASSWORD": env("DB_PASSWORD"),
+        "HOST": env.str("DB_HOST"),
+        "PORT": env.int("DB_PORT"),
+        "NAME": env.str("DB_NAME"),
+        "USER": env.str("DB_USER"),
+        "PASSWORD": env.str("DB_PASSWORD"),
     }
 }
 
 
 INSTALLED_APPS = ["datacenter"]
 
-SECRET_KEY = env("DJANGO_SECRET_KEY")
+SECRET_KEY = env.str("DJANGO_SECRET_KEY")
 
 DEBUG = env.bool("DEBUG_MODE", default=False)
 
@@ -37,13 +37,13 @@ TEMPLATES = [
     },
 ]
 
-USE_L10N = env.bool("USE_L10N", default=True)
+USE_L10N = True
 
 LANGUAGE_CODE = "ru-ru"
 
 TIME_ZONE = "Europe/Moscow"
 
-USE_TZ = env.bool("USE_TZ", default=True)
+USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
